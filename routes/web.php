@@ -13,6 +13,38 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/info', function () {
+    return Inertia::render('Info', [
+        'canLogin' => Route::has('login'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
+
+Route::get('/photo', function () {
+    return Inertia::render('Photo', [
+        'canLogin' => Route::has('login'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
+
+Route::get('/flash', function () {
+    return Inertia::render('Flash', [
+        'canLogin' => Route::has('login'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
+
+Route::get('/contact', function () {
+    return Inertia::render('Contact', [
+        'canLogin' => Route::has('login'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
