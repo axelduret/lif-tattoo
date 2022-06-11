@@ -4,8 +4,8 @@ Refactoring of https://lif-tattoo.com
 
 ### Desktop
 
-![Desktop](assets/img/info_capture_desktop.png "Desktop")
+![Desktop](assets/img/info_capture_desktop_001.png "Desktop")
 
 ### Mobile
 
-![Mobile](assets/img/info_capture_mobile.png "Mobile")
+![Mobile](assets/img/info_capture_mobile_001.png "Mobile")
