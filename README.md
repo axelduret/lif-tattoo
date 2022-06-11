@@ -1,6 +1,11 @@
-### LIF TATTOO
+# LIF TATTOO
 
 Refactoring of https://lif-tattoo.com
 
-![Accueil](assets/img/home_capture.png "Accueil")
-![Présentation](assets/img/info_capture.png "Présentation")
+### Desktop
+
+![Desktop](assets/img/info_capture_desktop.png "Desktop")
+
+### Mobile
+
+![Mobile](assets/img/info_capture_mobile.png "Mobile")
