@@ -6,43 +6,27 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
+        // 'canLogin' => Route::has('login'),
         // 'canRegister' => Route::has('register'), //NOTE: Register enable/disable.
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+        // 'laravelVersion' => Application::VERSION,
+        // 'phpVersion' => PHP_VERSION,
     ]);
 });
 
 Route::get('/info', function () {
-    return Inertia::render('Info', [
-        'canLogin' => Route::has('login'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Info');
 });
 
 Route::get('/photo', function () {
-    return Inertia::render('Photo', [
-        'canLogin' => Route::has('login'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Photo');
 });
 
 Route::get('/flash', function () {
-    return Inertia::render('Flash', [
-        'canLogin' => Route::has('login'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Flash');
 });
 
 Route::get('/contact', function () {
-    return Inertia::render('Contact', [
-        'canLogin' => Route::has('login'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Contact');
 });
 
 Route::middleware([
