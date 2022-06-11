@@ -11,23 +11,23 @@ Route::get('/', function () {
         // 'laravelVersion' => Application::VERSION,
         // 'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('home');
 
 Route::get('/info', function () {
     return Inertia::render('Info');
-});
+})->name('info');
 
 Route::get('/photo', function () {
     return Inertia::render('Photo');
-});
+})->name('photo');
 
 Route::get('/flash', function () {
     return Inertia::render('Flash');
-});
+})->name('flash');
 
 Route::get('/contact', function () {
     return Inertia::render('Contact');
-});
+})->name('contact');
 
 Route::middleware([
     'auth:sanctum',
