@@ -2,4 +2,5 @@
 
 Refactoring of https://lif-tattoo.com
 
-![Home Page preview](assets/img/home_capture.png "Home Page preview")
+![Accueil](assets/img/home_capture.png "Accueil")
+![Présentation](assets/img/info_capture.png "Présentation")
