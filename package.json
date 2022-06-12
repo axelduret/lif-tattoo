@@ -30,6 +30,10 @@
     "dependencies": {
         "@headlessui/vue": "^1.6.4",
         "@heroicons/vue": "^1.0.6",
-        "@vue-hero-icons/solid": "^1.7.2"
+        "@vue-hero-icons/solid": "^1.7.2",
+        "@vue-leaflet/vue-leaflet": "^0.6.1",
+        "autoprefixer": "10.4.5",
+        "leaflet": "^1.8.0",
+        "leaflet-gesture-handling": "^1.2.2"
     }
 }

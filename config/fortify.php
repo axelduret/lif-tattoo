@@ -132,7 +132,7 @@ return [
     */
 
     'features' => [
-        Features::registration(),
+        // Features::registration(), // TODO: Enable/disable registration.
         Features::resetPasswords(),
         Features::emailVerification(),
         Features::updateProfileInformation(),
