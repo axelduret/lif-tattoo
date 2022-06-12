@@ -24,7 +24,7 @@ const image = computed({
 </script>
 
 <template>
-    <Popover class="sticky top-0 bg-white dark:bg-slate-900">
+    <Popover class="sticky top-0 bg-white dark:bg-slate-900" style="z-index:2000">
         <div class=" mx-auto ">
             <div
                 class=" flex justify-between items-center border-b-2 border-gray-100 dark:border-slate-800 p-2  md:justify-start md:space-x-10">

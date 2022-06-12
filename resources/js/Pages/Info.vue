@@ -16,8 +16,8 @@ const image = computed({
 
     <Head title="Présentation" />
     <Header />
-    <main id="info">
-        <div class="grid p-0 sm:px-4 sm:py-2 md:py-3 dark:sm:bg-blue-900 dark:sm:bg-opacity-10">
+    <main id="info-page">
+        <div class="grid p-0 sm:px-4 sm:py-2 md:py-3 bg-blue-900 bg-opacity-10">
             <article id="introduction" class=" m-0 p-0  sm:py-2 md:py-4">
                 <div class=" mx-0 md:mx-auto    bg-white sm:rounded-xl shadow-md overflow-hidden  md:max-w-2xl">
                     <div class="grid">
@@ -62,12 +62,14 @@ const image = computed({
                             <div class="mt-2 text-slate-500">Née en 1980 en Turquie, c'est à l’âge de
                                 2
                                 ans qu'elle s'installe
-                                avec ses parents dans le quartier de la Jonction à Genève. Passionnée par le dessin dès
+                                avec ses parents dans le quartier de la Jonction à Genève. Passionnée par le dessin
+                                dès
                                 son
                                 enfance,
                                 c'est vers la trentaine qu'elle décide d'en faire son métier. Partagée entre
                                 l'illustration,
-                                le graffiti et le tatouage, cette artiste pluridisciplinaire a su se faire une place au
+                                le graffiti et le tatouage, cette artiste pluridisciplinaire a su se faire une place
+                                au
                                 sein
                                 de la
                                 scène artistique genevoise.</div>
