@@ -1,20 +1,18 @@
 <?php
 
-use App\Models\User;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        // 'canLogin' => Route::has('login'),
-        // 'canRegister' => Route::has('register'), //NOTE: Register enable/disable.
-        // 'laravelVersion' => Application::VERSION,
-        // 'phpVersion' => PHP_VERSION,
-    ]);
-})->name('home');
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         // 'canLogin' => Route::has('login'),
+//         // 'canRegister' => Route::has('register'), //NOTE: Register enable/disable.
+//         // 'laravelVersion' => Application::VERSION,
+//         // 'phpVersion' => PHP_VERSION,
+//     ]);
+// })->name('home');
 
-Route::get('/info', function () {
+Route::get('/', function () {
     return Inertia::render('Info');
 })->name('info');
 

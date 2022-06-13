@@ -48,10 +48,6 @@ const image = computed({
                         class="uppercase tracking-wide text-yellow-100 hover:text-orange-200 active:text-orange-200">
                         Accueil
                     </a>
-                    <a href="/info"
-                        class="uppercase tracking-wide text-yellow-100 hover:text-orange-200 active:text-orange-200">
-                        Présentation
-                    </a>
                     <a href="/photo"
                         class="uppercase tracking-wide text-yellow-100 hover:text-orange-200 active:text-orange-200">
                         Photos </a>
@@ -100,10 +96,6 @@ const image = computed({
                             <a href="/"
                                 class="uppercase tracking-wide font-semibold py-2 text-lg text-gray-300 hover:text-gray-200 active:text-gray-200">
                                 Accueil
-                            </a>
-                            <a href="/info"
-                                class="uppercase tracking-wide font-semibold py-2 text-lg text-gray-300 hover:text-gray-200 active:text-gray-200">
-                                Présentation
                             </a>
                             <a href="/photo"
                                 class="uppercase tracking-wide font-semibold py-2 text-lg text-gray-300 hover:text-gray-200 active:text-gray-200">

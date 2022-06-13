@@ -3,7 +3,7 @@ import { computed } from "@vue/reactivity";
 export const carouselInterval = computed({
     // The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.
     get() {
-        return "7000";
+        return "10000";
     },
 });
 export const carouselRide = computed({

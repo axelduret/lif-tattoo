@@ -31,7 +31,8 @@ const filteredCollection = computed({
     <Head title="Photos" />
     <Header />
     <main id="photo-page">
-        <div class="grid p-0 sm:px-4 sm:py-2 md:py-3 bg-blue-900 bg-opacity-10">
+        <div class="grid p-0 sm:px-4 sm:py-2 md:py-3 bg-blue-900 bg-opacity-10"
+            style="height:calc(100vh - 66px); overflow:hidden">
             <article id="photo-carousel" class=" m-0 p-0  sm:py-2 md:py-4">
                 <div class=" mx-0 md:mx-auto    bg-white sm:rounded-xl shadow-md overflow-hidden  md:max-w-2xl">
                     <div class="grid">
