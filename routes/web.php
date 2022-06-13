@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -17,7 +19,19 @@ Route::get('/info', function () {
 })->name('info');
 
 Route::get('/photo', function () {
-    return Inertia::render('Photo');
+    return Inertia::render(
+        'Photo',
+        [
+            'imagesCollection' => collect(
+                [
+                    ['name' => 'tattoo_01', 'path' => 'tattoo_01.jpg', 'id' => 0],
+                    ['name' => 'tattoo_02', 'path' => 'tattoo_02.jpg', 'id' => 1],
+                    ['name' => 'tattoo_03', 'path' => 'tattoo_03.jpg', 'id' => 2],
+                    ['name' => 'tattoo_04', 'path' => 'tattoo_04.jpg', 'id' => 3]
+                ]
+            )
+        ]
+    );
 })->name('photo');
 
 Route::get('/flash', function () {

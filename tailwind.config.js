@@ -5,6 +5,7 @@ module.exports = {
     content: [
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
         "./vendor/laravel/jetstream/**/*.blade.php",
+        "./node_modules/tw-elements/dist/js/**/*.js",
         "./storage/framework/views/*.php",
         "./resources/views/**/*.blade.php",
         "./resources/js/**/*.vue",
@@ -19,6 +20,7 @@ module.exports = {
     },
 
     plugins: [
+        require("tw-elements/dist/plugin"),
         require("@tailwindcss/forms"),
         require("@tailwindcss/typography"),
     ],
