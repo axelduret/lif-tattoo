@@ -35,7 +35,6 @@
         "autoprefixer": "10.4.5",
         "leaflet": "^1.8.0",
         "leaflet-gesture-handling": "^1.2.2",
-        "mdb-ui-kit": "^4.1.0",
         "tw-elements": "^1.0.0-alpha12"
     }
 }

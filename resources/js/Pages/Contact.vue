@@ -4,7 +4,8 @@ import Header from "../Components/Header.vue"
 import {
     LocationMarkerIcon,
     MailIcon,
-    PhoneIcon
+    PhoneIcon,
+    AnnotationIcon
 } from '@heroicons/vue/outline'
 import {
 } from '@heroicons/vue/solid'
@@ -32,7 +33,8 @@ export default {
         LControlLayers,
         PhoneIcon,
         LPopup,
-        Header
+        Header,
+        AnnotationIcon
     },
     props: {
         test: String
@@ -47,6 +49,7 @@ export default {
             url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             layerType: "base",
             layerName: "OpenStreetMap",
+            center: [46.210482, 6.14767],
             latLng: [46.209992, 6.14767],
             popupOptions: { closeButton: false },
             mapOptions: {
@@ -78,11 +81,12 @@ export default {
 </script>
 
 <template>
+    <!-- TODO: Add leaflet gesture handling -->
 
     <Head title="Contact" />
     <Header />
     <main id="contact-page">
-        <div class="grid p-0 sm:px-4 sm:py-2 md:py-3 bg-blue-900 bg-opacity-10">
+        <div class="grid p-0 sm:px-4 sm:py-2 md:py-3 bg-blue-900 bg-opacity-10 ">
             <article id=" address" class=" m-0 p-0  sm:py-2 md:py-4">
                 <div class=" mx-0 md:mx-auto bg-white sm:rounded-xl shadow-md overflow-hidden md:max-w-2xl">
                     <div class="md:flex">
@@ -127,11 +131,27 @@ export default {
             </article>
             <article id="form" class=" m-0 p-0  sm:py-2 md:py-4">
                 <div class=" mx-0 md:mx-auto    sm:rounded-xl shadow-md overflow-hidden  md:max-w-2xl">
-                    <section id="form-title" class="px-4 py-5 sm:px-6 sm:border-t-0 border-t border-b   bg-slate-100">
-                        <h2 class=" tracking-wide text-md leading-6 font-medium text-slate-800">Formulaire de contact
-                        </h2>
-                        <p class="mt-1 max-w-2xl text-sm text-slate-600">Veuillez remplir les champs indiqués
-                            ci-dessous. Je vous répondrai dans les meilleurs délais.</p>
+                    <section id="form-title"
+                        class="px-4 py-5 sm:px-6 sm:border-t-0 border-t sm:border-b border-b-0   bg-slate-100">
+                        <div class="flex justify-start items-center">
+                            <div class="font-thin text-slate-500 opacity-80 pl-2">
+                                <span class="sr-only">Message</span>
+                                <AnnotationIcon class="h-7 w-7 ml-4 mr-8" aria-hidden="true" />
+                            </div>
+                            <div class="pl-6 pr-4 border-l-2">
+                                <h2 class=" tracking-wide text-lg  leading-6 font-semibold text-slate-500">Formulaire de
+                                    contact
+                                </h2>
+                                <div class="mt-1 max-w-2xl text-sm text-slate-600 inline sm:block">Veuillez remplir les
+                                    champs
+                                    indiqués
+                                    ci-dessous. </div>
+                                <div class="mt-1 max-w-2xl text-sm text-slate-600 inline sm:block">Je vous répondrai
+                                    dans les
+                                    meilleurs
+                                    délais.</div>
+                            </div>
+                        </div>
                     </section>
                     <section id="form-content">
                         <form action="#" method="POST">
@@ -157,15 +177,15 @@ export default {
                                             Message
                                         </label>
                                         <div class="mt-1">
-                                            <textarea id="message" name="message" rows="12"
+                                            <textarea id="message" name="message" rows="10"
                                                 class="shadow-sm focus:ring-slate-500 focus:border-slate-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                                                 placeholder="Votre texte ici ..." />
                                         </div>
                                     </div>
                                 </div>
-                                <div class="px-4 border-t border-b sm:border-b-0 py-3 bg-slate-100 text-right ">
+                                <div class="px-4 bg-white pt-2 pb-5 border-b sm:border-b-0 text-right">
                                     <button type="submit"
-                                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-700 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500">Envoyer</button>
+                                        class="w-full sm:w-48 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400">Envoyer</button>
                                 </div>
                             </div>
                         </form>
@@ -177,7 +197,7 @@ export default {
                     <section id="map-content" class="">
                         <div style="height: 75vh; width: 100%;" class=" p-4 bg-white space-y-6">
                             <l-map ref="myMap" @ready="openPopup()" :options="mapOptions" v-model:zoom="zoom"
-                                v-model:maxZoom="maxZoom" v-model:minZoom="minZoom" :center="latLng">
+                                v-model:maxZoom="maxZoom" v-model:minZoom="minZoom" :center="center">
                                 <l-tile-layer :layer-type="layerType" :name="layerName" :url="url">
                                 </l-tile-layer>
                                 <l-control-attribution position="bottomright"
