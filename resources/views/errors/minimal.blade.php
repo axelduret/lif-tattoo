@@ -19,7 +19,7 @@
 <body class="  bg-slate-900 ">
     <div class="max-w-xl mx-auto">
         <div>
-            <a href="{{ route('home') }}"><img class="p-24" src="{{ url('storage/img/lif_tattoo_logo_slate_900.jpg') }}" alt="Lif Tattoo Logo" title="Lif Tattoo" /></a>
+            <a href="{{ route('home') }}"><img src="{{ url('storage/img/lif_tattoo_logo_slate_900.jpg') }}" alt="Lif Tattoo Logo" title="Lif Tattoo" /></a>
         </div>
         <div class="flex items-center pt-0 justify-center  mt-8">
             <div class="px-4 text-lg text-slate-500   border-r border-slate-800 tracking-wider">

@@ -1,7 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Repositories\MenuRepository;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\Pages\ShowController;
+use App\Http\Controllers\Web\Pages\IndexController;
+use App\Http\Controllers\Web\Pages\StoreController;
+use App\Http\Controllers\Web\Pages\DeleteController;
+use App\Http\Controllers\Web\Pages\UpdateController;
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
@@ -12,33 +18,25 @@ use Inertia\Inertia;
 //     ]);
 // })->name('home');
 
-Route::get('/', function () {
-    return Inertia::render('Info');
-})->name('info');
+try {
+    $routes = call_user_func_array(new MenuRepository, []);
+    foreach ($routes as $route) {
+        Route::get('/' . $route['path'], function () use ($route) {
+            return call_user_func_array(new IndexController, [$route['name']]);
+        })->name(name: $route['name']);
+    }
+} catch (\Throwable $e) {
+}
 
-Route::get('/photo', function () {
-    return Inertia::render(
-        'Photo',
-        [
-            'imagesCollection' => collect(
-                [
-                    ['name' => 'tattoo_01', 'path' => 'tattoo_01.jpg', 'id' => 0],
-                    ['name' => 'tattoo_02', 'path' => 'tattoo_02.jpg', 'id' => 1],
-                    ['name' => 'tattoo_03', 'path' => 'tattoo_03.jpg', 'id' => 2],
-                    ['name' => 'tattoo_04', 'path' => 'tattoo_04.jpg', 'id' => 3]
-                ]
-            )
-        ]
-    );
-})->name('photo');
-
-Route::get('/flash', function () {
-    return Inertia::render('Flash');
-})->name('flash');
-
-Route::get('/contact', function () {
-    return Inertia::render('Contact');
-})->name('contact');
+Route::prefix('tests')->as('tests.')->group(function () {
+    Route::get('/', function () {
+        return call_user_func_array(new IndexController, ['photo']);
+    })->name(name: 'index');
+    Route::post(uri: '/', action: StoreController::class)->name(name: 'store');
+    // Route::get(uri: '{id}', action: ShowController::class)->name(name: 'show');
+    // Route::patch(uri: '{id}', action: UpdateController::class)->name(name: 'update');
+    // Route::delete(uri: '{id}', action: DeleteController::class)->name(name: 'delete');
+});
 
 Route::middleware([
     'auth:sanctum',
