@@ -12,8 +12,7 @@ import {
     carouselTouch,
 } from "../Config/Carousel";
 const props = defineProps({
-    page: Array,
-    title: String,
+    page: Object,
     links: Array,
     imagesCollection: Array,
 });
@@ -30,7 +29,7 @@ const filteredCollection = computed({
 </script>
 
 <template>
-    <Head :title="title" />
+    <Head :title="page.title" />
     <Header :links="links" />
     <main id="photo-page">
         <div
