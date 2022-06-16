@@ -18,6 +18,7 @@ class Page extends Model
     /** @var array<string> */
     protected $fillable = [
         'name',
+        'published_at'
     ];
 
     /** @var array<string> */

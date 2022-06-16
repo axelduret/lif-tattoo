@@ -4,7 +4,7 @@ import Header from "../Components/Header.vue";
 import { computed } from "@vue/reactivity";
 defineProps({
     page: Object,
-    links: Array,
+    links: Object,
 });
 const image = computed({
     get() {

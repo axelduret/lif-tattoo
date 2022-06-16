@@ -19,6 +19,7 @@ class Form extends Model
         'label',
         'type',
         'placeholder',
+        'published_at'
     ];
 
     /** @var array<string> */

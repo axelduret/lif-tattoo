@@ -18,8 +18,10 @@ class Image extends Model
         'name',
         'legend',
         'description',
+        'file',
         'format',
         'size',
+        'published_at'
     ];
 
     /** @var array<string> */
@@ -34,7 +36,7 @@ class Image extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo('user');
+        return $this->belongsTo(User::class);
     }
 
     public function pages(): MorphToMany

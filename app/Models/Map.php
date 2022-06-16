@@ -28,6 +28,7 @@ class Map extends Model
         'scrollWheelZoom',
         'touchZoom',
         'gestureHandling',
+        'published_at'
     ];
 
     /** @var array<string> */
