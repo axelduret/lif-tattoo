@@ -13,13 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->softDeletes();
             $table->timestamp('published_at')->nullable();
-            $table->string('name');
+            $table->string('title');
+            $table->string('path');
+            $table->unsignedInteger('weight')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('page_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('menus');
     }
 };

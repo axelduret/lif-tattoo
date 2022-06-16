@@ -11,14 +11,21 @@ import { computed } from "@vue/reactivity";
 
 const props = defineProps({
     links: Array,
-    // canLogin: Boolean,
     canRegister: Boolean,
-    // laravelVersion: String,
-    // phpVersion: String,
 });
 const image = computed({
     get() {
         return "/storage/";
+    },
+});
+const primaryLinks = computed({
+    get() {
+        return props.links.filter((i) => i.title !== "contact");
+    },
+});
+const secondaryLinks = computed({
+    get() {
+        return props.links.filter((i) => i.title === "contact");
     },
 });
 </script>
@@ -60,28 +67,11 @@ const image = computed({
                 >
                     <a
                         :href="'/' + link.path"
-                        class="uppercase tracking-wide text-yellow-100 hover:text-orange-200 active:text-orange-200"
+                        class="uppercase tracking-wide text-yellow-100 hover:text-orange-200"
+                        :class="{ 'text-orange-200': link.active }"
                     >
                         {{ link.title }}
                     </a>
-                    <!-- <a
-                        href="/photo"
-                        class="uppercase tracking-wide text-yellow-100 hover:text-orange-200 active:text-orange-200"
-                    >
-                        Photos
-                    </a>
-                    <a
-                        href="/flash"
-                        class="uppercase tracking-wide text-yellow-100 hover:text-orange-200 active:text-orange-200"
-                    >
-                        Flash
-                    </a>
-                    <a
-                        href="/contact"
-                        class="uppercase tracking-wide text-yellow-100 hover:text-orange-200 active:text-orange-200"
-                    >
-                        Contact
-                    </a> -->
                 </PopoverGroup>
                 <div class="hidden md:flex items-center justify-end md:flex-1">
                     <a
@@ -141,24 +131,16 @@ const image = computed({
                     <div>
                         <div
                             class="grid py-4 dark:bg-blue-900 dark:bg-opacity-20 gap-y-2 grid-cols-1 px-5"
+                            v-for="link in primaryLinks"
                         >
                             <a
-                                href="/"
-                                class="uppercase tracking-wide font-semibold py-2 text-lg text-gray-300 hover:text-gray-200 active:text-gray-200"
+                                :href="'/' + link.path"
+                                class="uppercase tracking-wide font-semibold text-lg text-gray-300 hover:text-gray-200 disabled:text-black"
+                                :class="{
+                                    'text-slate-400': link.active,
+                                }"
                             >
-                                Accueil
-                            </a>
-                            <a
-                                href="/photo"
-                                class="uppercase tracking-wide font-semibold py-2 text-lg text-gray-300 hover:text-gray-200 active:text-gray-200"
-                            >
-                                Photos
-                            </a>
-                            <a
-                                href="/flash"
-                                class="uppercase tracking-wide font-semibold py-2 text-lg text-gray-300 hover:text-gray-200 active:text-gray-200"
-                            >
-                                Flash
+                                {{ link.title }}
                             </a>
                         </div>
                         <div px-5>
@@ -171,19 +153,15 @@ const image = computed({
                             </a>
                             <p
                                 class="border-t grid gap-y-2 grid-cols-1 border-slate-800 text-center text-base py-4 font-medium text-gray-500"
+                                v-for="link in secondaryLinks"
                             >
                                 <a
-                                    href="/contact"
-                                    class="uppercase tracking-wide text-yellow-100 hover:text-orange-200 active:text-orange-200"
+                                    :href="'/' + link.path"
+                                    class="uppercase tracking-wide text-yellow-100 hover:text-orange-200"
                                 >
-                                    Contact
+                                    {{ link.title }}
                                 </a>
                             </p>
-                            <!-- <p class="mt-6 text-center text-base font-medium text-gray-500">
-                                Existing customer?
-                                {{ ' ' }}
-                                <a href="/login" class="text-indigo-600 hover:text-indigo-500"> Sign in </a>
-                            </p> -->
                         </div>
                     </div>
                 </div>

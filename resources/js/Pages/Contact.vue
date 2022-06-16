@@ -36,8 +36,7 @@ export default {
         AnnotationIcon,
     },
     props: {
-        page: Array,
-        title: String,
+        page: Object,
         links: Array,
     },
     data() {
@@ -85,7 +84,7 @@ export default {
 
 <template>
     <!-- TODO: Add leaflet gesture handling -->
-    <Head :title="title" />
+    <Head :title="page.title" />
     <Header :links="links" />
     <main id="contact-page">
         <div class="grid p-0 sm:px-4 sm:py-2 md:py-3 bg-blue-900 bg-opacity-10">

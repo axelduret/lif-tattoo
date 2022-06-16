@@ -3,8 +3,7 @@ import { Head } from "@inertiajs/inertia-vue3";
 import Header from "../Components/Header.vue";
 import { computed } from "@vue/reactivity";
 defineProps({
-    page: Array,
-    title: String,
+    page: Object,
     links: Array,
 });
 const image = computed({
@@ -15,7 +14,7 @@ const image = computed({
 </script>
 
 <template>
-    <Head :title="title" />
+    <Head :title="page.title" />
     <Header :links="links" />
     <main id="info-page">
         <div class="grid p-0 sm:px-4 sm:py-2 md:py-3 bg-blue-900 bg-opacity-10">

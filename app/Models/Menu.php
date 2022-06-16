@@ -8,16 +8,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
-class Page extends Model
+class Menu extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     /** @var array<string> */
     protected $fillable = [
-        'name',
+        'title',
+        'path',
+        'weight',
+        'user_id'
     ];
 
     /** @var array<string> */
@@ -35,28 +37,8 @@ class Page extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function menu(): HasOne
+    public function page(): BelongsTo
     {
-        return $this->hasOne(Menu::class);
-    }
-
-    public function images(): MorphToMany
-    {
-        return $this->morphToMany(Image::class, 'imageable');
-    }
-
-    public function posts(): MorphToMany
-    {
-        return $this->morphToMany(Post::class, 'postable');
-    }
-
-    public function maps(): MorphToMany
-    {
-        return $this->morphToMany(Map::class, 'mapable');
-    }
-
-    public function forms(): MorphToMany
-    {
-        return $this->morphToMany(Form::class, 'formable');
+        return $this->belongsTo(Page::class);
     }
 }

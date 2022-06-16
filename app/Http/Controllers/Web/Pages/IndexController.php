@@ -5,22 +5,19 @@ namespace App\Http\Controllers\Web\Pages;
 use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Support\Str;
+use App\Services\PageAggregatorService;
 use App\Http\Controllers\Controller;
-use App\Repositories\MenuRepository;
-use App\Repositories\PageRepository;
 
 class IndexController extends Controller
 {
     public function __invoke(string $name): Response
     {
-        $pageRepository = call_user_func(new PageRepository, $name);
-        $menuRepository = call_user_func(new MenuRepository);
+        $pageAggregator = (new PageAggregatorService)->get($name);
         return Inertia::render(
             Str::title($name),
             [
-                'page' => $pageRepository,
-                'title' => Str::title($pageRepository->title),
-                'links' => $menuRepository,
+                'page' => $pageAggregator['page'],
+                'links' => $pageAggregator['menu'],
                 'imagesCollection' => collect(
                     [
                         ['name' => 'tattoo_01', 'path' => 'tattoo_01.jpg', 'id' => 0],

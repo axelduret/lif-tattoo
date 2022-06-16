@@ -2,23 +2,15 @@
 
 namespace App\Repositories;
 
-use App\Models\Page;
+use App\Models\Menu;
+use Illuminate\Support\Collection;
 
 class MenuRepository
 {
-    public function __invoke(): array
+    public function __invoke(): Collection
     {
         try {
-            $pages = Page::select('title', 'name', 'path', 'weight')->orderBY('weight')->get();
-            $menu = [];
-            foreach ($pages as $page) {
-                $menu[] = [
-                    'title' => $page->title,
-                    'name' => $page->name,
-                    'path' => $page->path,
-                    'weight' => $page->weight
-                ];
-            }
+            $menu = Menu::orderBy('weight')->get();
             return $menu;
         } catch (\Throwable $e) {
         }
