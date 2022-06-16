@@ -18,6 +18,7 @@ class MapLayer extends Model
         'name',
         'type',
         'url',
+        'published_at'
     ];
 
     /** @var array<string> */

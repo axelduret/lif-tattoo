@@ -37,7 +37,7 @@ export default {
     },
     props: {
         page: Object,
-        links: Array,
+        links: Object,
     },
     data() {
         return {

@@ -5,11 +5,12 @@ use App\Repositories\MenuRepository;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Pages\ShowController;
 use App\Http\Controllers\Web\Pages\IndexController;
-use App\Http\Controllers\Web\Pages\StoreController;
+use App\Http\Controllers\Web\Pages\StoreController as PageStoreController;
 use App\Http\Controllers\Web\Pages\DeleteController;
 use App\Http\Controllers\Web\Pages\UpdateController;
+use App\Http\Controllers\Web\Images\StoreController as ImageStoreController;
 
-// Route::get('/', function () {
+// Route::get('/home', function () {
 //     return call_user_func(new IndexController, 'home');
 
 //     // [
@@ -20,6 +21,20 @@ use App\Http\Controllers\Web\Pages\UpdateController;
 //     // ]);
 // })->name('home');
 
+Route::prefix('pages')->as('pages.')->group(function () {
+    Route::post(uri: '', action: PageStoreController::class)->name(name: 'store');
+    // Route::get(uri: '{id}', action: ShowController::class)->name(name: 'show');
+    // Route::patch(uri: '{id}', action: UpdateController::class)->name(name: 'update');
+    // Route::delete(uri: '{id}', action: DeleteController::class)->name(name: 'delete');
+});
+
+Route::prefix('image')->as('image.')->group(function () {
+    Route::post(uri: '', action: ImageStoreController::class)->name(name: 'store');
+});
+Route::get('/images', function () {
+    dd('dsad');
+})->name('images');
+
 try {
     $routes = call_user_func(new MenuRepository);
     foreach ($routes as $route) {
@@ -27,17 +42,10 @@ try {
             uri: '/' . $route->path,
             action: fn () => call_user_func(new IndexController, $route->page->name)
         )
-            ->name(name: $route->name);
+            ->name(name: $route->page->name);
     }
 } catch (\Throwable $e) {
 }
-
-Route::prefix('pages')->as('pages.')->group(function () {
-    Route::post(uri: '', action: StoreController::class)->name(name: 'store');
-    // Route::get(uri: '{id}', action: ShowController::class)->name(name: 'show');
-    // Route::patch(uri: '{id}', action: UpdateController::class)->name(name: 'update');
-    // Route::delete(uri: '{id}', action: DeleteController::class)->name(name: 'delete');
-});
 
 Route::middleware([
     'auth:sanctum',

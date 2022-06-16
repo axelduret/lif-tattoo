@@ -3,17 +3,10 @@ import { Head } from "@inertiajs/inertia-vue3";
 import Header from "../Components/Header.vue";
 import { computed } from "@vue/reactivity";
 import "tw-elements";
-import {
-    carouselInterval,
-    carouselKeyboard,
-    carouselRide,
-    carouselWrap,
-    carouselPause,
-    carouselTouch,
-} from "../Config/Carousel";
+import { carouselConfig } from "../Config/carouselConfig";
 const props = defineProps({
     page: Object,
-    links: Array,
+    links: Object,
     imagesCollection: Array,
 });
 const storage = computed({
@@ -45,12 +38,12 @@ const filteredCollection = computed({
                             <div
                                 id="photo-carousel-items"
                                 class="carousel slide relative"
-                                :data-bs-interval="carouselInterval"
-                                :data-bs-ride="carouselRide"
-                                :data-bs-touch="carouselTouch"
-                                :data-bs-wrap="carouselWrap"
-                                :data-bs-keyboard="carouselKeyboard"
-                                :data-bs-pause="carouselPause"
+                                :data-bs-interval="carouselConfig.interval"
+                                :data-bs-ride="carouselConfig.ride"
+                                :data-bs-touch="carouselConfig.touch"
+                                :data-bs-wrap="carouselConfig.wrap"
+                                :data-bs-keyboard="carouselConfig.keyboard"
+                                :data-bs-pause="carouselConfig.pause"
                             >
                                 <div
                                     class="carousel-inner relative overflow-hidden"

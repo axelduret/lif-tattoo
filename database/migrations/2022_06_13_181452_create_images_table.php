@@ -21,8 +21,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('legend')->nullable();
             $table->longText('description')->nullable();
-            $table->string('format')->nullable(); // TODO: Add logic to get Mime Type.
-            $table->string('size')->nullable(); // TODO: Add logic to get file Size.
+            $table->string('file');
+            $table->string('format')->nullable();
+            $table->string('size')->nullable();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

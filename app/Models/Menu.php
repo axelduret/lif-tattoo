@@ -19,7 +19,8 @@ class Menu extends Model
         'title',
         'path',
         'weight',
-        'user_id'
+        'user_id',
+        'published_at'
     ];
 
     /** @var array<string> */

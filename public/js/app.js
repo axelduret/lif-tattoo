@@ -24435,10 +24435,7 @@ __webpack_require__.r(__webpack_exports__);
   __name: 'Header',
   props: {
     links: Array,
-    // canLogin: Boolean,
-    canRegister: Boolean // laravelVersion: String,
-    // phpVersion: String,
-
+    canRegister: Boolean
   },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
@@ -24449,9 +24446,25 @@ __webpack_require__.r(__webpack_exports__);
         return "/storage/";
       }
     });
+    var primaryLinks = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.computed)({
+      get: function get() {
+        return props.links.filter(function (i) {
+          return i.title !== "contact";
+        });
+      }
+    });
+    var secondaryLinks = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.computed)({
+      get: function get() {
+        return props.links.filter(function (i) {
+          return i.title === "contact";
+        });
+      }
+    });
     var __returned__ = {
       props: props,
       image: image,
+      primaryLinks: primaryLinks,
+      secondaryLinks: secondaryLinks,
       Popover: _headlessui_vue__WEBPACK_IMPORTED_MODULE_1__.Popover,
       PopoverButton: _headlessui_vue__WEBPACK_IMPORTED_MODULE_1__.PopoverButton,
       PopoverGroup: _headlessui_vue__WEBPACK_IMPORTED_MODULE_1__.PopoverGroup,
@@ -26372,8 +26385,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     page: Object,
-    title: String,
-    links: Array
+    links: Object
   },
   data: function data() {
     return {
@@ -26481,8 +26493,7 @@ __webpack_require__.r(__webpack_exports__);
   __name: 'Home',
   props: {
     page: Object,
-    title: String,
-    links: Array
+    links: Object
   },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
@@ -26524,7 +26535,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vue_reactivity__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @vue/reactivity */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
 /* harmony import */ var tw_elements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tw-elements */ "./node_modules/tw-elements/dist/js/index.min.js");
 /* harmony import */ var tw_elements__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tw_elements__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Config_Carousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Config/Carousel */ "./resources/js/Config/Carousel.js");
+/* harmony import */ var _Config_carouselConfig__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Config/carouselConfig */ "./resources/js/Config/carouselConfig.js");
 
 
 
@@ -26534,8 +26545,7 @@ __webpack_require__.r(__webpack_exports__);
   __name: 'Photo',
   props: {
     page: Object,
-    title: String,
-    links: Array,
+    links: Object,
     imagesCollection: Array
   },
   setup: function setup(__props, _ref) {
@@ -26561,12 +26571,7 @@ __webpack_require__.r(__webpack_exports__);
       Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.Head,
       Header: _Components_Header_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
       computed: _vue_reactivity__WEBPACK_IMPORTED_MODULE_4__.computed,
-      carouselInterval: _Config_Carousel__WEBPACK_IMPORTED_MODULE_3__.carouselInterval,
-      carouselKeyboard: _Config_Carousel__WEBPACK_IMPORTED_MODULE_3__.carouselKeyboard,
-      carouselRide: _Config_Carousel__WEBPACK_IMPORTED_MODULE_3__.carouselRide,
-      carouselWrap: _Config_Carousel__WEBPACK_IMPORTED_MODULE_3__.carouselWrap,
-      carouselPause: _Config_Carousel__WEBPACK_IMPORTED_MODULE_3__.carouselPause,
-      carouselTouch: _Config_Carousel__WEBPACK_IMPORTED_MODULE_3__.carouselTouch
+      carouselConfig: _Config_carouselConfig__WEBPACK_IMPORTED_MODULE_3__.carouselConfig
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -27903,39 +27908,22 @@ var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_20 = {
   "class": "grid py-4 dark:bg-blue-900 dark:bg-opacity-20 gap-y-2 grid-cols-1 px-5"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "/",
-  "class": "uppercase tracking-wide font-semibold py-2 text-lg text-gray-300 hover:text-gray-200 active:text-gray-200"
-}, " Accueil "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "/photo",
-  "class": "uppercase tracking-wide font-semibold py-2 text-lg text-gray-300 hover:text-gray-200 active:text-gray-200"
-}, " Photos "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "/flash",
-  "class": "uppercase tracking-wide font-semibold py-2 text-lg text-gray-300 hover:text-gray-200 active:text-gray-200"
-}, " Flash ")], -1
-/* HOISTED */
-);
-
-var _hoisted_21 = {
+};
+var _hoisted_21 = ["href"];
+var _hoisted_22 = {
   "px-5": ""
 };
-var _hoisted_22 = {
+var _hoisted_23 = {
   key: 0,
   href: "#",
   "class": "w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
 };
-
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_24 = {
   "class": "border-t grid gap-y-2 grid-cols-1 border-slate-800 text-center text-base py-4 font-medium text-gray-500"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "/contact",
-  "class": "uppercase tracking-wide text-yellow-100 hover:text-orange-200 active:text-orange-200"
-}, " Contact ")], -1
-/* HOISTED */
-);
-
+};
+var _hoisted_25 = ["href"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Popover"], {
     "class": "sticky top-0 bg-white dark:bg-slate-900",
@@ -27971,10 +27959,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
             return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
               href: '/' + link.path,
-              "class": "uppercase tracking-wide text-yellow-100 hover:text-orange-200 active:text-orange-200"
-            }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(link.title), 9
-            /* TEXT, PROPS */
-            , _hoisted_9), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <a\n                        href=\"/photo\"\n                        class=\"uppercase tracking-wide text-yellow-100 hover:text-orange-200 active:text-orange-200\"\n                    >\n                        Photos\n                    </a>\n                    <a\n                        href=\"/flash\"\n                        class=\"uppercase tracking-wide text-yellow-100 hover:text-orange-200 active:text-orange-200\"\n                    >\n                        Flash\n                    </a>\n                    <a\n                        href=\"/contact\"\n                        class=\"uppercase tracking-wide text-yellow-100 hover:text-orange-200 active:text-orange-200\"\n                    >\n                        Contact\n                    </a> ")];
+              "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["uppercase tracking-wide text-yellow-100 hover:text-orange-200", {
+                'text-orange-200': link.active
+              }])
+            }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(link.title), 11
+            /* TEXT, CLASS, PROPS */
+            , _hoisted_9)];
           }),
           _: 2
           /* DYNAMIC */
@@ -28019,7 +28009,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 _: 1
                 /* STABLE */
 
-              })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [$props.canRegister ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", _hoisted_22, " Sign up ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p class=\"mt-6 text-center text-base font-medium text-gray-500\">\n                                Existing customer?\n                                {{ ' ' }}\n                                <a href=\"/login\" class=\"text-indigo-600 hover:text-indigo-500\"> Sign in </a>\n                            </p> ")])])])];
+              })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.primaryLinks, function (link) {
+                return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+                  href: '/' + link.path,
+                  "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["uppercase tracking-wide font-semibold text-lg text-gray-300 hover:text-gray-200 disabled:text-black", {
+                    'text-slate-400': link.active
+                  }])
+                }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(link.title), 11
+                /* TEXT, CLASS, PROPS */
+                , _hoisted_21)]);
+              }), 256
+              /* UNKEYED_FRAGMENT */
+              )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [$props.canRegister ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", _hoisted_23, " Sign up ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.secondaryLinks, function (link) {
+                return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+                  href: '/' + link.path,
+                  "class": "uppercase tracking-wide text-yellow-100 hover:text-orange-200"
+                }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(link.title), 9
+                /* TEXT, PROPS */
+                , _hoisted_25)]);
+              }), 256
+              /* UNKEYED_FRAGMENT */
+              ))])])])];
             }),
             _: 1
             /* STABLE */
@@ -31332,7 +31342,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_l_map = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("l-map");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" TODO: Add leaflet gesture handling "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
-    title: $props.title
+    title: $props.page.title
   }, null, 8
   /* PROPS */
   , ["title"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header, {
@@ -31593,7 +31603,7 @@ var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Head"], {
-    title: $props.title
+    title: $props.page.title
   }, null, 8
   /* PROPS */
   , ["title"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Header"], {
@@ -31706,7 +31716,7 @@ var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticV
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Head"], {
-    title: $props.title
+    title: $props.page.title
   }, null, 8
   /* PROPS */
   , ["title"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Header"], {
@@ -31716,12 +31726,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["links"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("article", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     id: "photo-carousel-items",
     "class": "carousel slide relative",
-    "data-bs-interval": $setup.carouselInterval,
-    "data-bs-ride": $setup.carouselRide,
-    "data-bs-touch": $setup.carouselTouch,
-    "data-bs-wrap": $setup.carouselWrap,
-    "data-bs-keyboard": $setup.carouselKeyboard,
-    "data-bs-pause": $setup.carouselPause
+    "data-bs-interval": $setup.carouselConfig.interval,
+    "data-bs-ride": $setup.carouselConfig.ride,
+    "data-bs-touch": $setup.carouselConfig.touch,
+    "data-bs-wrap": $setup.carouselConfig.wrap,
+    "data-bs-keyboard": $setup.carouselConfig.keyboard,
+    "data-bs-pause": $setup.carouselConfig.pause
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: $setup.storage + $props.imagesCollection[0].path,
     "class": "relative right-44 sm:right-0 w-full sm:w-auto",
@@ -33954,63 +33964,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./resources/js/Config/Carousel.js":
-/*!*****************************************!*\
-  !*** ./resources/js/Config/Carousel.js ***!
-  \*****************************************/
+/***/ "./resources/js/Config/carouselConfig.js":
+/*!***********************************************!*\
+  !*** ./resources/js/Config/carouselConfig.js ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "carouselInterval": () => (/* binding */ carouselInterval),
-/* harmony export */   "carouselKeyboard": () => (/* binding */ carouselKeyboard),
-/* harmony export */   "carouselPause": () => (/* binding */ carouselPause),
-/* harmony export */   "carouselRide": () => (/* binding */ carouselRide),
-/* harmony export */   "carouselTouch": () => (/* binding */ carouselTouch),
-/* harmony export */   "carouselWrap": () => (/* binding */ carouselWrap)
+/* harmony export */   "carouselConfig": () => (/* binding */ carouselConfig)
 /* harmony export */ });
-/* harmony import */ var _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/reactivity */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
-
-var carouselInterval = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.computed)({
-  // The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.
-  get: function get() {
-    return "10000";
-  }
-});
-var carouselRide = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.computed)({
-  // Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.
-  get: function get() {
-    return "carousel";
-  }
-});
-var carouselTouch = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.computed)({
-  // Whether the carousel should support left/right swipe interactions on touchscreen devices.
-  get: function get() {
-    return true;
-  }
-});
-var carouselWrap = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.computed)({
-  // 	Whether the carousel should cycle continuously or have hard stops.
-  get: function get() {
-    return true;
-  }
-});
-var carouselPause = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.computed)({
-  // If set to "hover", pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave.
-  // If set to false, hovering over the carousel won’t pause it. On touch-enabled devices, when set to "hover",
-  // cycling will pause on touchend (once the user finished interacting with the carousel) for two intervals, before automatically resuming.
-  // This is in addition to the mouse behavior.
-  get: function get() {
-    return "hover";
-  }
-});
-var carouselKeyboard = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.computed)({
-  // Whether the carousel should react to keyboard events.
-  get: function get() {
-    return true;
-  }
-});
+var carouselConfig = {
+  interval: "10000",
+  keyboard: true,
+  pause: "hover",
+  ride: "carousel",
+  touch: true,
+  wrap: true
+};
 
 /***/ }),
 
